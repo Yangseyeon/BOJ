@@ -15,10 +15,6 @@ while queue:
         print(visited[location] - 1)
         break
 
-    next_2X = location * 2
-    next_M1 = location - 1
-    next_P1 = location + 1
-
     next_list = [location * 2, location - 1, location + 1]
 
     for next in next_list:
