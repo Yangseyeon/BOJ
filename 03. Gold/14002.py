@@ -25,6 +25,8 @@ while count_list[idx] != 1:
 
 print_route.append(num_list[idx])
 print_route.reverse()
-print(*print_route)
+
 
 print(max(count_list))
+print(*print_route)
+
