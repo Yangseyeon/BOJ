@@ -4,6 +4,7 @@ from collections import deque
 A, B = map(int, sys.stdin.readline().strip().split())
 queue = deque()
 visited = deque()
+
 queue.append(A)
 visited.append(1)
 flag = 0
