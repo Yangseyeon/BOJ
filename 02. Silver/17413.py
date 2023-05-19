@@ -3,6 +3,7 @@ string = sys.stdin.readline().strip()
 
 str_stack = []
 result = ""
+
 i = 0
 
 while i < len(string):
