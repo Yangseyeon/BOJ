@@ -10,7 +10,6 @@ for i in range(m):
     for j in range(k):
         edge[n + i].append(tube[j] - 1)
         edge[tube[j] - 1].append(n + i)
-
 queue = deque()
 queue.append(0)
 visited[0] = 1
@@ -30,6 +29,5 @@ while queue:
                 continue
             
             visited[next] = visited[station] + 1
-
 
 print(level)
