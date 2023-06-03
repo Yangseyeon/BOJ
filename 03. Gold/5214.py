@@ -2,32 +2,34 @@ import sys
 from collections import deque
 
 n, k, m = map(int, sys.stdin.readline().strip().split())
+edge = [[] for _ in range(n + m)]
+visited = [0 for _ in range(n + m)]
 
-edge = [[] for _ in range(n)]
+for i in range(m):
+    tube = list(map(int, sys.stdin.readline().strip().split()))
+    for j in range(k):
+        edge[n + i].append(tube[j] - 1)
+        edge[tube[j] - 1].append(n + i)
 
-for _ in range(m):
-    s_list = list(map(int, sys.stdin.readline().strip().split()))
-
-    for i in s_list:
-        for j in s_list:
-            if j - 1 not in edge[i - 1] and i - 1 != j - 1:
-                edge[i - 1].append(j - 1)
-
-
-visited = [0 for _ in range(n)]
 queue = deque()
 queue.append(0)
 visited[0] = 1
 level = -1
 
 while queue:
-    vertice = queue.popleft()
-    if vertice == n - 1:
-        level = visited[vertice]
+    station = queue.popleft()
+    if station == n - 1:
+        level = visited[station]
+        break
 
-    for v in edge[vertice]:
-        if visited[v] == 0:
-            queue.append(v)
-            visited[v] = visited[vertice] + 1
+    for next in edge[station]:
+        if visited[next] == 0:
+            queue.append(next)
+            if next >= n:
+                visited[next] = visited[station]
+                continue
+            
+            visited[next] = visited[station] + 1
+
 
 print(level)
