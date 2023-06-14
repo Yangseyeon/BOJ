@@ -4,7 +4,7 @@ def set_area(idx, case):
     global cnt
     s_i, s_j = cctv[idx][1], cctv[idx][2]
 
-    for i in range(s_i, -1, -1):
+    for i in range(s_i - 1, -1, -1):
         if area[i][s_j] == 6 or case[0] == 0:
             break
         if area[i][s_j] == -idx - 1:
@@ -14,9 +14,8 @@ def set_area(idx, case):
             area[i][s_j] = -idx -1
             cnt -= 1
 
-        
 
-    for i in range(s_i, n):
+    for i in range(s_i + 1, n):
         if area[i][s_j] == 6 or case[2] == 0:
             break
         if area[i][s_j] == -idx - 1:
@@ -28,7 +27,7 @@ def set_area(idx, case):
 
        
     
-    for j in range(s_j, -1, -1):
+    for j in range(s_j - 1, -1, -1):
         if area[s_i][j] == 6 or case[1] == 0:
             break
 
@@ -41,9 +40,8 @@ def set_area(idx, case):
             area[s_i][j] = -idx-1
             cnt -= 1
 
-        
 
-    for j in range(s_j, m):
+    for j in range(s_j + 1, m):
         if area[s_i][j] == 6 or case[3] == 0:
             break
         if area[s_i][j] == -idx - 1:
@@ -54,14 +52,10 @@ def set_area(idx, case):
             cnt -= 1
         
 
-
 def set_cctv(idx):
     global cnt
     global min_cnt
     if idx == len(cctv):
-        # for i in area:
-        #     print(i)
-        # print(cnt)
         if cnt < min_cnt:
             min_cnt = cnt
         return
@@ -73,9 +67,6 @@ def set_cctv(idx):
         set_area(idx, case)
         
 
-    
-
-
 
 area = []
 cctv = []
@@ -85,6 +76,7 @@ cctv_case = {
     3: [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1], [1, 0, 0, 1]],
     4: [[1, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1], [1, 1, 0, 1]],
     5: [[1, 1, 1, 1]]}
+
 cnt = 0
 min_cnt = 65
 
