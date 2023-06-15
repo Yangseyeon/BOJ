@@ -15,10 +15,7 @@ for num in a[::-1]:
             break
         stack.pop()
     
-    if not stack:
-        ngf.append(-1)
-    else:
-        ngf.append(stack[-1])
+    ngf.append(-1) if not stack else ngf.append(stack[-1])
     stack.append(num)
 
 print(*ngf[::-1])
